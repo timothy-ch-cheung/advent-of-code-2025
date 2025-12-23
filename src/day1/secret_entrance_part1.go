@@ -2,7 +2,6 @@ package day1
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"strconv"
 )
@@ -19,7 +18,7 @@ type instruction struct {
 	rotations int
 }
 
-func SolvePart1(path string) {
+func SolvePart1(path string) int {
 	file, err := os.Open(path)
 	if err != nil {
 		panic(err)
@@ -43,7 +42,7 @@ func SolvePart1(path string) {
 		}
 	}
 
-	fmt.Println(solution)
+	return solution
 }
 
 func rotateLeft(currPos int, rotation int) int {
