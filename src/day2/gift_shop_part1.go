@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+type productRange struct {
+	start string
+	end   string
+}
+
 func SolvePart1(path string) int64 {
 	file, err := os.Open(path)
 	if err != nil {
@@ -16,16 +21,24 @@ func SolvePart1(path string) int64 {
 
 	scanner := bufio.NewScanner(file)
 	scanner.Scan()
-	line := scanner.Text()
-	productRanges := strings.Split(line, ",")
+	productRanges := parseLine(scanner.Text())
 	var sum int64 = 0
+	for i := 0; i < len(productRanges); i++ {
+		sum += sumInvalidIds(productRanges[i].start, productRanges[i].end)
+	}
+	return sum
+}
+
+func parseLine(line string) []productRange {
+	result := make([]productRange, 0)
+	productRanges := strings.Split(line, ",")
 	for i := 0; i < len(productRanges); i++ {
 		parsedLine := strings.Split(productRanges[i], "-")
 		start := parsedLine[0]
 		end := parsedLine[1]
-		sum += sumInvalidIds(start, end)
+		result = append(result, productRange{start: start, end: end})
 	}
-	return sum
+	return result
 }
 
 func sumInvalidIds(start string, end string) int64 {
