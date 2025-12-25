@@ -6,6 +6,11 @@ import (
 )
 
 const (
+	PATH  = "day4/input.txt"
+	TITLE = "Printing Department"
+)
+
+const (
 	roll = '@'
 	free = '.'
 )

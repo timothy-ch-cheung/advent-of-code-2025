@@ -6,6 +6,11 @@ import (
 	"strconv"
 )
 
+const (
+	PATH  = "day3/input.txt"
+	TITLE = "Lobby"
+)
+
 const INT_OFFSET = 48
 
 func SolvePart1(path string) int {

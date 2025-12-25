@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+const (
+	PATH  = "day2/input.txt"
+	TITLE = "Gift Shop"
+)
+
 type productRange struct {
 	start string
 	end   string

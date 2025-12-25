@@ -13,6 +13,11 @@ const (
 	Right
 )
 
+const (
+	PATH  = "day1/input.txt"
+	TITLE = "Secret Entrance"
+)
+
 type instruction struct {
 	direction Direction
 	rotations int

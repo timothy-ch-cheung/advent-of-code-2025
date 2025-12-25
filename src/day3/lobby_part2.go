@@ -2,7 +2,6 @@ package day3
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 )
 
@@ -18,7 +17,6 @@ func SolvePart2(path string) int64 {
 	var total int64 = 0
 	for scanner.Scan() {
 		bank := scanner.Text()
-		fmt.Println(maxJoltageV2(bank, 12))
 		total += maxJoltageV2(bank, 12)
 	}
 	return total
