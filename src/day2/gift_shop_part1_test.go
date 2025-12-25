@@ -113,7 +113,6 @@ func (s *GiftShopPart1Suite) TestSumInvalidIds() {
 			s.Assert().Equal(tt.expected, actual)
 		})
 	}
-	s.Assert().Equal(int64(33), sumInvalidIds("11", "22"))
 }
 
 func (s *GiftShopPart1Suite) TestSolvePart1Example() {

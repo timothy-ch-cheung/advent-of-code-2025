@@ -2,7 +2,6 @@ package day2
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 )
 
@@ -31,7 +30,7 @@ func sumInvalidProductIdsForAllLengths(start string, end string) int64 {
 	for i := 1; i <= lengths; i++ {
 		lowerBound := findLowerBoundGivenLength(start, i)
 		upperBound := findUpperBoundGivenLength(end, i)
-		fmt.Printf("start[%s] end[%s] lower[%d] upper[%d] length[%d] repeats[%d]\n", start, end, lowerBound, upperBound, lengths, intDivide(len(end), lengths))
+		//fmt.Printf("start[%s] end[%s] lower[%d] upper[%d] length[%d] repeats[%d]\n", start, end, lowerBound, upperBound, lengths, intDivide(len(end), lengths))
 		for j := lowerBound; j <= upperBound; j++ {
 			part := toStr(j)
 			repeats := intDivide(len(end), lengths)
