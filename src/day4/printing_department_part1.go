@@ -10,7 +10,7 @@ const (
 	free = '.'
 )
 
-var adjacentFuncs = []func(int, int, []string) uint8{topLeft, top, topRight, left, right, botLeft, bot, botRight}
+var adjacentFuncs = []func(int, int, [][]uint8) uint8{topLeft, top, topRight, left, right, botLeft, bot, botRight}
 
 func SolvePart1(path string) int {
 	count := 0
@@ -25,7 +25,7 @@ func SolvePart1(path string) int {
 	return count
 }
 
-func parseInput(path string) []string {
+func parseInput(path string) [][]uint8 {
 	file, err := os.Open(path)
 	scanner := bufio.NewScanner(file)
 	if err != nil {
@@ -33,15 +33,19 @@ func parseInput(path string) []string {
 	}
 	defer file.Close()
 
-	department := make([]string, 0)
+	department := make([][]uint8, 0)
 	for scanner.Scan() {
 		line := scanner.Text()
-		department = append(department, line)
+		row := make([]uint8, len(line))
+		department = append(department, row)
+		for i := 0; i < len(line); i++ {
+			row[i] = line[i]
+		}
 	}
 	return department
 }
 
-func isAccessible(x int, y int, department []string) bool {
+func isAccessible(x int, y int, department [][]uint8) bool {
 	adjacentRolls := 0
 	for i := 0; i < len(adjacentFuncs); i++ {
 		if adjacentFuncs[i](x, y, department) == roll {
@@ -51,56 +55,56 @@ func isAccessible(x int, y int, department []string) bool {
 	return adjacentRolls < 4
 }
 
-func topLeft(x int, y int, department []string) uint8 {
+func topLeft(x int, y int, department [][]uint8) uint8 {
 	if x > 0 && y > 0 {
 		return department[y-1][x-1]
 	}
 	return free
 }
 
-func top(x int, y int, department []string) uint8 {
+func top(x int, y int, department [][]uint8) uint8 {
 	if y > 0 {
 		return department[y-1][x]
 	}
 	return free
 }
 
-func topRight(x int, y int, department []string) uint8 {
+func topRight(x int, y int, department [][]uint8) uint8 {
 	if x < len(department[0])-1 && y > 0 {
 		return department[y-1][x+1]
 	}
 	return free
 }
 
-func left(x int, y int, department []string) uint8 {
+func left(x int, y int, department [][]uint8) uint8 {
 	if x > 0 {
 		return department[y][x-1]
 	}
 	return free
 }
 
-func right(x int, y int, department []string) uint8 {
+func right(x int, y int, department [][]uint8) uint8 {
 	if x < len(department[0])-1 {
 		return department[y][x+1]
 	}
 	return free
 }
 
-func botLeft(x int, y int, department []string) uint8 {
+func botLeft(x int, y int, department [][]uint8) uint8 {
 	if x > 0 && y < len(department)-1 {
 		return department[y+1][x-1]
 	}
 	return free
 }
 
-func bot(x int, y int, department []string) uint8 {
+func bot(x int, y int, department [][]uint8) uint8 {
 	if y < len(department)-1 {
 		return department[y+1][x]
 	}
 	return free
 }
 
-func botRight(x int, y int, department []string) uint8 {
+func botRight(x int, y int, department [][]uint8) uint8 {
 	if x < len(department[0])-1 && y < len(department)-1 {
 		return department[y+1][x+1]
 	}

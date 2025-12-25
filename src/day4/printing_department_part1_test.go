@@ -12,7 +12,7 @@ type PrintingDepartmentPart1Suite struct {
 
 func (p *PrintingDepartmentPart1Suite) TestPrintingDepartmentPart1() {
 	tests := []struct {
-		directionFunc func(int, int, []string) uint8
+		directionFunc func(int, int, [][]uint8) uint8
 		x             int
 		y             int
 		expected      uint8
@@ -34,10 +34,10 @@ func (p *PrintingDepartmentPart1Suite) TestPrintingDepartmentPart1() {
 		{directionFunc: botRight, x: 1, y: 1, expected: '9'},
 		{directionFunc: botRight, x: 2, y: 2, expected: '.'},
 	}
-	department := []string{
-		"123",
-		"456",
-		"789",
+	department := [][]uint8{
+		{'1', '2', '3'},
+		{'4', '5', '6'},
+		{'7', '8', '9'},
 	}
 
 	for _, tt := range tests {
