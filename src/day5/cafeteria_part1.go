@@ -1,10 +1,10 @@
 package day5
 
 import (
+	"advent-of-code-2025/util"
 	"bufio"
 	"os"
 	"sort"
-	"strconv"
 	"strings"
 )
 
@@ -40,8 +40,8 @@ func parseFreshRanges(path string) ([]freshRange, []int) {
 		}
 		parts := strings.Split(line, "-")
 		freshRanges = append(freshRanges, freshRange{
-			start: toInt(parts[0]),
-			end:   toInt(parts[1]),
+			start: util.ToInt(parts[0]),
+			end:   util.ToInt(parts[1]),
 		})
 	}
 	sort.SliceStable(freshRanges, func(i, j int) bool {
@@ -53,7 +53,7 @@ func parseFreshRanges(path string) ([]freshRange, []int) {
 
 	ingredients := make([]int, 0)
 	for scanner.Scan() {
-		ingredients = append(ingredients, toInt(scanner.Text()))
+		ingredients = append(ingredients, util.ToInt(scanner.Text()))
 	}
 
 	return freshRanges, ingredients
@@ -69,7 +69,7 @@ func isFresh(id int, start int, end int, ranges []freshRange) bool {
 		return false
 	}
 
-	mid := intDivide(start+end, 2)
+	mid := util.IntDivide(start+end, 2)
 	if mid >= len(ranges) || mid < 0 {
 		return false
 	}
@@ -90,17 +90,4 @@ func isFreshLinear(id int, ranges []freshRange) bool {
 		}
 	}
 	return false
-}
-
-func toInt(s string) int {
-	result, err := strconv.Atoi(s)
-	if err != nil {
-		panic(err)
-	}
-	return result
-}
-
-func intDivide(numerator int, denominator int) int {
-	remainder := numerator % denominator
-	return (numerator - remainder) / denominator
 }
