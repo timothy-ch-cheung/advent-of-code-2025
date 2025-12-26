@@ -3,7 +3,6 @@ package day3
 import (
 	"bufio"
 	"os"
-	"strconv"
 )
 
 const (
@@ -48,12 +47,4 @@ func maxJoltage(bank string) int {
 		}
 	}
 	return firstMax*10 + secondMax
-}
-
-func toInt(s string) int {
-	result, err := strconv.Atoi(s)
-	if err != nil {
-		panic(err)
-	}
-	return result
 }
