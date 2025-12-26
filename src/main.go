@@ -6,6 +6,7 @@ import (
 	"advent-of-code-2025/day3"
 	"advent-of-code-2025/day4"
 	"advent-of-code-2025/day5"
+	"advent-of-code-2025/day6"
 	"fmt"
 	"time"
 )
@@ -21,6 +22,7 @@ func main() {
 	runBenchmark(day4.TITLE+" Part 2", func() any { return day4.SolvePart2(day4.PATH) })
 	runBenchmark(day5.TITLE+" Part 1", func() any { return day5.SolvePart1(day5.PATH) })
 	runBenchmark(day5.TITLE+" Part 2", func() any { return day5.SolvePart2(day5.PATH) })
+	runBenchmark(day6.TITLE+" Part 1", func() any { return day6.SolvePart1(day6.PATH) })
 
 }
 
