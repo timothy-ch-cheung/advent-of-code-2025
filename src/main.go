@@ -23,6 +23,7 @@ func main() {
 	runBenchmark(day5.TITLE+" Part 1", func() any { return day5.SolvePart1(day5.PATH) })
 	runBenchmark(day5.TITLE+" Part 2", func() any { return day5.SolvePart2(day5.PATH) })
 	runBenchmark(day6.TITLE+" Part 1", func() any { return day6.SolvePart1(day6.PATH) })
+	runBenchmark(day6.TITLE+" Part 2", func() any { return day6.SolvePart2(day6.PATH) })
 
 }
 

@@ -17,6 +17,11 @@ const (
 )
 
 func SolvePart1(path string) int {
+	worksheet := parseWorksheet(path)
+	return solveWorksheet(worksheet)
+}
+
+func parseWorksheet(path string) [][]string {
 	file, err := os.Open(path)
 	scanner := bufio.NewScanner(file)
 	if err != nil {
@@ -28,7 +33,7 @@ func SolvePart1(path string) int {
 	for scanner.Scan() {
 		worksheet = append(worksheet, strings.Fields(scanner.Text()))
 	}
-	return solveWorksheet(worksheet)
+	return worksheet
 }
 
 func solveWorksheet(worksheet [][]string) int {

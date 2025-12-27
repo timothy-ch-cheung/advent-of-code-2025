@@ -21,3 +21,7 @@ func IntDivide(numerator int, denominator int) int {
 	remainder := numerator % denominator
 	return (numerator - remainder) / denominator
 }
+
+func Last(str string) uint8 {
+	return str[len(str)-1]
+}
